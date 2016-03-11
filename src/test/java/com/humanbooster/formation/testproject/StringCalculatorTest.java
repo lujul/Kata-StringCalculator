@@ -1,7 +1,9 @@
-package com.humanbooster.formation.testProject;
+package com.humanbooster.formation.testproject;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.humanbooster.formation.testproject.StringCalculator;
 
 public class StringCalculatorTest {
 

@@ -1,10 +1,12 @@
-package com.humanbooster.formation.testProject;
+package com.humanbooster.formation.testproject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
 
+	private StringCalculator(){}
+	
 	/**
 	 * 
 	 * @param string,
@@ -47,14 +49,14 @@ public class StringCalculator {
 
 	private static void triggerExceptionForNegatives(String[] valuesInString) {
 		// save the negative values of the string
-		List<String> negatives = new ArrayList<String>();
+		List<String> negatives = new ArrayList<>();
 		for (String value : valuesInString) {
 			if (Integer.parseInt(value) < 0) {
 				negatives.add(value);
 			}
 		}	
 		// trigger an exception if there is negatives in the string
-		if (negatives.size() > 0) {
+		if (!negatives.isEmpty()) {
 			IllegalArgumentException exception = new IllegalArgumentException("Negatives not allowed: " + negatives.toString());
 			exception.printStackTrace();
 			throw exception;
