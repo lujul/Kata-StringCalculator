@@ -1,22 +1,10 @@
 package com.humanbooster.formation.testProject;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class StringCalculatorTest {
 
-    @Before
-    public void avantTest() {
-        System.out.println("On va tester la classe StringCalculator");
-    }
-    
-    @After
-    public void apresTest() {
-        System.out.println("On va FINI les tests !");
-    }
-    
 	@Test
 	// Test if the method add return 0 with an empty string
 	public void shouldReturnZeroWhenStringEmpty() {
@@ -45,7 +33,7 @@ public class StringCalculatorTest {
 		final int actual = StringCalculator.add("1,2,3");
 		Assert.assertEquals(6, actual);
 	}
-	
+
 	@Test
 	// Test if the method add return the sum of the int in the string
 	public void shouldReturnTheSumOfIntSeparatedByComasOrNewLineInString() {
@@ -58,7 +46,7 @@ public class StringCalculatorTest {
 	}
 
 	@Test
-	// Test if the method add return the sum of the int in the string
+	//
 	public void shouldReturnTheSumOfIntSeparatedDelimiterInString() {
 		int actual = StringCalculator.add("//;\n1;3");
 		Assert.assertEquals(4, actual);
@@ -66,5 +54,13 @@ public class StringCalculatorTest {
 		Assert.assertEquals(26, actual);
 		actual = StringCalculator.add("//	\n1	3	7");
 		Assert.assertEquals(11, actual);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	//
+	public void shouldRunExceptionIfNegativesInTheString() {
+		int actual = StringCalculator.add("1,2,-3");
+		actual = StringCalculator.add("//toto\n1toto-3toto22");
+		actual = StringCalculator.add("//	\n1	-3	-7");
 	}
 }
